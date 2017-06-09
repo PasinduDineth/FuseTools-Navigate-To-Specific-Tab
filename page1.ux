@@ -1,0 +1,24 @@
+<Page ux:Class="page1">
+  <JavaScript>
+    module.exports = {
+      gotoSecond: function() { router.push("page2"); }
+    };
+</JavaScript>
+  <Router ux:Dependency="router" />
+  <string ux:Property="Text" />
+
+  <Button ux:Class="MyNativeButtonWithFallback" Margin="2">
+      <Panel ux:Template="GraphicsAppearance" HitTestMode="LocalBounds">
+          <Text Value="{ReadProperty Text}" Color="#fff" Alignment="Center" TextAlignment="Center" Margin="10" />
+          <Rectangle CornerRadius="4" Layer="Background" Color="#C70039" />
+          <WhilePressed>
+     <Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+ </WhilePressed>
+      </Panel>
+  </Button>
+  <StackPanel Alignment="Center" ItemSpacing="20">
+  <MyNativeButtonWithFallback Clicked="{gotoSecond}" Alignment="Center" Text="Go To 2nd page" Padding="10"/>
+  <MyNativeButtonWithFallback Text="Go To 2nd Page 2nd Tab"/>
+  <MyNativeButtonWithFallback Text="Go To 2nd Page 3rd Tab"/>
+  </StackPanel>
+</Page>
